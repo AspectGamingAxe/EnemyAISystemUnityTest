@@ -9,7 +9,7 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [Header("Basics Walking")]
-	[SerializeField] Transform Nextpos;
+    [SerializeField] Transform Nextpos;
     public NavMeshAgent Agent;//Agent on the enemy Ref
     public Transform Player; //Player Ref
     public float smoothness; //how smooth the npc turns
@@ -18,11 +18,11 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Distance Between Player")]
     public float distancebeforemove; //set the distance of how far the player can get before the NPC moves closer
-	[SerializeField] float distancetoplayer;
+    [SerializeField] float distancetoplayer;
     [SerializeField] bool distancebool;
 
-	[Header("NewSpots")]
-	public Manager manager;
+    [Header("NewSpots")]
+    public Manager manager;
 
 
 
@@ -40,17 +40,17 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         //Looking At Player Script
-		rotationdir = Player.position - transform.position;
-		transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rotationdir), smoothness);
+	rotationdir = Player.position - transform.position;
+	transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rotationdir), smoothness);
         
-
+	//manually make the enemy move
         if (Input.GetKeyDown(KeyCode.Space))
         {
-			PickNewSpot();
-		}
+		PickNewSpot();
+	}
 
         //Picking New Spot Incase Current Spot Is No Longer Valid
-		if (!manager.ValidSpots.Contains(manager.currentspot) )
+	if (!manager.ValidSpots.Contains(manager.currentspot) )
         {
             PickNewSpot();
         }
