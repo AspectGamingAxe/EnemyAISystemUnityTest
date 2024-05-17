@@ -21,7 +21,7 @@ public class Manager : MonoBehaviour
 	// Start is called before the first frame update
 	private void Awake()
 	{
-		Hidingspots.Clear();//This is just to make sure that the Hiding spot list is clear before i start adding to the list.
+		Hidingspots.Clear();//This is just to make sure that the Hiding spot list is clear before i start adding to the list to avoid bugs.
 	}
 
 	void Start()
