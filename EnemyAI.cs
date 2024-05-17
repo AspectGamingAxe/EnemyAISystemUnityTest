@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.AI; //This is important so you can use the NavMeshAgent methods and functions.
 
 
 //PUT THIS ON THE ENEMY
