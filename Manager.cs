@@ -46,7 +46,7 @@ public class Manager : MonoBehaviour
 	public Transform FindNewSpot()//This is a transform function that will let me return a transform
 	{
 		index = Random.Range(0, ValidSpots.Count);//gets a random number from 0 to the amount of valid spots there are, and saves that as a variable
-		if(index > 0)//this is just to check that there are any valid spots was chosen to avoid errors.
+		if(index > 0)//this is just to check that there are any valid spots were chosen to avoid errors.
 		{
             HidingSpots randomlocation = ValidSpots[index]; //creates a temporary variable that holds the hiding spot within the validspots list corespodant to the Index variable
             currentspot = randomlocation;//saves the random location to a variable
