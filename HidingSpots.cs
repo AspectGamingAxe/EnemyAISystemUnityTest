@@ -82,10 +82,10 @@ public class HidingSpots : MonoBehaviour
 		}
 		else
 		{
-			StartCoroutine(FalseRay()); // Starts the FalseRay Coroutine since lasthit is equal to null
+			StartCoroutine(FalseRay()); // Starts the FalseRay Coroutine if lasthit is equal to null
 		}
 
-		if (!inrange) //this is just to check if at anytime the player leaves the spherecast that it makes the spot invalid
+		if (!inrange) //this is just to check if at anytime the player leaves the spherecast, if the player does leave it makes the spot invalid
 		{
 			StartCoroutine(FalseRay());// Starts the FalseRay Coroutine
 		}
@@ -115,7 +115,7 @@ public class HidingSpots : MonoBehaviour
 		{
 			manager.UpdateStatusToTrue(this); //Runs the UpdateStatusToTrue function in manager and runs this gameobject as a parameter
 			Valid = true; 
-			Debug.Log("Hitting Cover"); //Just so i can check if the code actually works
+			Debug.Log("Hitting Cover"); //This sends a message so i can check if the code actually works
 			yield return new WaitForSeconds(5f);//This is so it doesn't run every frame
 		}
 		
@@ -127,7 +127,7 @@ public class HidingSpots : MonoBehaviour
 		{
 			manager.UpdateStatusToFalse(this);//Runs the UpdateStatusToFalse function in manager and runs this gameobject as a parameter
 			Valid = false;
-			Debug.Log("Hitting Not");//Just so i can check if the code actually works
+			Debug.Log("Hitting Not");//This sends a message just so i can check if the code actually works
 			yield return new WaitForSeconds(5f);//This is so it doesn't run every frame
 			
 		}
@@ -148,9 +148,9 @@ public class HidingSpots : MonoBehaviour
 	//This is just so the shphereoverlay is visable
 	private void OnDrawGizmos()    
 	{
-		Gizmos.color = Color.green;
-		Gizmos.color *= 0.1f;
-		Gizmos.DrawSphere(transform.position, sphereradius);
+		Gizmos.color = Color.green; //Colour of the spherecast
+		Gizmos.color *= 0.1f;// this is the alpha of it, so how transperant it is.
+		Gizmos.DrawSphere(transform.position, sphereradius); //This maes the spherecast visable.
 
 		
 	}
