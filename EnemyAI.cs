@@ -32,7 +32,7 @@ public class EnemyAI : MonoBehaviour
 	void Start()
     {
         Agent.updateRotation = false; //This makes it so the Navmesh Agent Rotaiton isnt controlled by the path it takes, this is so the enemy is always facing the player even if it is moving.
-        distancebool = true; //I set this to true so that the IEnumerator works.
+        distancebool = true; //I set this to true so that the IEnumerator works when it gets called for the first time.
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class EnemyAI : MonoBehaviour
         //Looking At Player Script
 	rotationdir = Player.position - transform.position; //Standered way to find the direction from one object to another by anothre by subtracting their Vector3 Positions using the rotationdir variable.
  
-	transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rotationdir), smoothness); //Updates the rotation of the Enemy to the
+	transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(rotationdir), smoothness); //Updates the rotation of the Enemy to the Direction of the enemy, while using a lerp method to make the rotation smooth and not instant
         
 	//manually make the enemy move
         if (Input.GetKeyDown(KeyCode.Space))
@@ -73,11 +73,11 @@ public class EnemyAI : MonoBehaviour
 	
         distancetoplayer = Vector3.Distance(transform.position, Player.transform.position);//gets the distance from the player to the enemy and saving that as a variable.
 
-        if (distancetoplayer > distancebeforemove)//checks if the distance to the player is greater than the distance before move                                
+        if (distancetoplayer > distancebeforemove)//checks if the distance to the player is greater than the distancebeforemove variable                              
         {
             if(distancebool == true)//checks if the distancebool is true so it doesnt get called every frame
 	    {
-     		if(Agent.remainingDistance <= Agent.stoppingDistance)//checks if the enemy has finished moving to its destination, so it doesnt keep trying to move to a new location even though it's currently moving to one
+     		if(Agent.remainingDistance <= Agent.stoppingDistance)//checks if the enemy has finished moving to its current destination, so it doesnt keep trying to move to a new location even though it's currently moving to one
        		{
 	 		PickNewSpot(); //Runs the PickNewSpot Function.
             		StartCoroutine(DistanceToFix());//Runs the DistanceToFix Coroutine
@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-        //quick way i could think of to fix a bug, that stops the if statement
+        //quick way i could think of to fix a bug, that stops the if statement from running every frame
         IEnumerator DistanceToFix()
         {
             if (distancebool == true)//checks if i distance is set to true, and only if it is true, will the code run under it
