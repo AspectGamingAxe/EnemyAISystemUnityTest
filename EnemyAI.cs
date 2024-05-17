@@ -46,13 +46,13 @@ public class EnemyAI : MonoBehaviour
 	//manually make the enemy move
         if (Input.GetKeyDown(KeyCode.Space))
         {
-		PickNewSpot();
+		PickNewSpot();//Runs the PickNewSpot Function.
 	}
 
         //Picking New Spot Incase Current Spot Is No Longer Valid
 	if (!manager.ValidSpots.Contains(manager.currentspot))
         {
-            PickNewSpot();
+            PickNewSpot();//Runs the PickNewSpot Function.
         }
         
         
